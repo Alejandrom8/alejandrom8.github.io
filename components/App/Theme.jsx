@@ -14,7 +14,7 @@ let Theme = createTheme({
         },
         h3: {
             fontFamily: 'Noto Sans',
-            fontSize: '2rem'
+            fontSize: '2rem',
         },
         body1: {
             fontFamily: 'Noto Sans',

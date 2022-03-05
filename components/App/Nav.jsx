@@ -83,7 +83,7 @@ function Nav ({  }) {
                     <Button
                         key={name}
                         onClick={() => handleRoute(path)}
-                        sx={{ my: 3, color: 'white', display: 'block' }}
+                        sx={{ my: 2, color: 'white', display: 'block' }}
                     >
                         {name}
                     </Button>
@@ -103,7 +103,7 @@ function Nav ({  }) {
                     ))
                 }
                 <Button variant={'contained'} color={'secondary'}>
-                        Contact
+                    Contact
                 </Button>
             </Toolbar>
         </AppBar>
