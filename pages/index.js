@@ -1,4 +1,16 @@
-import { Grid, Box, Typography, Button, Container, Card, CardMedia, CardContent, CardActions } from '@mui/material';
+import {
+  Grid,
+  Box,
+  Typography,
+  Button,
+  Container,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  useMediaQuery,
+  useTheme, Collapse
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import Head from 'next/head';
@@ -13,6 +25,7 @@ import SwiperCore, {
   Pagination,
 } from 'swiper';
 import clsx from 'clsx';
+import HomeSection from "../components/Home/HomeSection";
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
@@ -69,7 +82,10 @@ const projects = [
 ];
 
 function Home() {
-  const classes = useStyles();
+  const classes = useStyles(),
+      theme = useTheme(),
+      isMd = useMediaQuery(theme.breakpoints.up('md'));
+
   return <React.Fragment>
     <Head>
       <title>Home | Alejandro Gómez</title>
@@ -94,87 +110,90 @@ function Home() {
                 <Typography>
                   Passionate autodidactic programmer with 3 years of expirience in the fields of <b>web development</b> and <b>big data engineering</b>.
                 </Typography>
-                <Box pt={3} display={'flex'}>
-                  <Box pr={2}>
-                  <Button variant={'outlined'} color={'primary'}>See my projects</Button>
+                <Box pt={3} display={'flex'} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
+                  <Box pr={isMd ? 2 : 0} pb={isMd ? 0 : 2}>
+                    <Button variant={'contained'} color={'primary'} fullWidth={!isMd}>Let's talk</Button>
                   </Box>
-                  <Button variant={'contained'} color={'primary'}>Let's talk</Button>
+                  <Button variant={'outlined'} color={'primary'} fullWidth={!isMd}>See my projects</Button>
                 </Box>
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Box sx={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-              <img src={'/me.svg'} className={classes.me}/>
-            </Box>
-          </Grid>
+          {
+            isMd && <Grid item xs={12} md={6}>
+              <Box sx={{display: 'flex', justifyContent: 'center', width: '100%', alignItems: 'center', height: '100%'}}>
+                <img src={'/me.png'} className={classes.me} alt={'Alejandro Gómez picture'}/>
+              </Box>
+            </Grid>
+          }
         </Grid>
       </Container>
     </section>
-    <section className={classes.block} style={{ paddingBottom: 4, paddingTop: 4 }}>
-      <Container>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Box pb={4}>
-              <Typography variant={'h2'}>
-                Projects
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12}>
-            <Swiper
-              pagination={{
-                clickable: true,
-              }}
-              spaceBetween={50}
-              slidesPerView={2}
-            >
-              {
-                projects.map((project, index) => (
-                  <SwiperSlide key={index}>
-                    <Card>
-                        <CardMedia
-                          component={'img'}
-                          height={'200px'}
-                          image={project.cover}
-                          alt={project.name}
-                        />
-                        <CardContent>
-                          <Typography variant={'h5'}>
-                            {project.name}
-                          </Typography>
-                          <Typography variant={'body2'} color={'text.secondary'} style={{ marginTop: 4 }}>
-                            {project.description}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button size="small">Share</Button>
-                          <Button size="small">Learn More</Button>
-                        </CardActions>
-                      </Card>
-                  </SwiperSlide>
-                ))
-              }
-            </Swiper>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-    <section className={classes.block}>hola</section>
+    <HomeSection title={'About me'}>
+      about
+    </HomeSection>
+    <HomeSection title={'My Resume'}>
+      hola
+    </HomeSection>
+    <HomeSection title={'Portfolio'}>
+      <Swiper
+          pagination={{
+            clickable: true,
+          }}
+          spaceBetween={50}
+          slidesPerView={isMd ? 2 : 1}
+      >
+        {
+          projects.map((project, index) => (
+              <SwiperSlide key={index}>
+                <Card>
+                  <CardMedia
+                      component={'img'}
+                      height={'200px'}
+                      image={project.cover}
+                      alt={project.name}
+                  />
+                  <CardContent>
+                    <Typography variant={'h5'}>
+                      {project.name}
+                    </Typography>
+                    <Typography variant={'body2'} color={'text.secondary'} style={{ marginTop: 4 }}>
+                      {project.description}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Share</Button>
+                    <Button size="small">Learn More</Button>
+                  </CardActions>
+                </Card>
+              </SwiperSlide>
+          ))
+        }
+      </Swiper>
+    </HomeSection>
   </React.Fragment>
 }
 
 const useStyles = makeStyles((theme) => ({
   block: {
     width: '100%',
-    minHeight: '90vh'
+    padding: theme.spacing(2, 0),
+    margin: theme.spacing(0, 0, 4, 0),
+    [theme.breakpoints.down('md')]: {
+      margin: theme.spacing(4, 0),
+    }
   },
   heading: {
-    height: '90vh !important',
+    height: '92vh',
+    marginTop: 0,
+    [theme.breakpoints.down('md')]: {
+      height: '60vh',
+    },
+    backgroundColor: 'rgb(0, 13, 41)',
     //backgroundColor: '#3E65B6'
   },
   contrastText: {
-    color: theme.palette.tertiary.main
+    color: theme.palette.secondary.main
   },
   me: {
     width: '490px',

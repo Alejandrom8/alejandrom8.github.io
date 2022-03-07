@@ -25,9 +25,19 @@ let Theme = createTheme({
         primary: {
             main: '#3777FF',
         },
-        tertiary: {
-            main: '#FCAB10'
+        secondary: {
+            main: '#FCAB10',
         },
+        tertiary: {
+            main: '#0A595C'
+        },
+        text: {
+            secondary: '#444'
+        },
+        background: {
+            default: '#222',
+            paper: 'rgb(0, 13, 41)'
+        }
     },
     components: {
         MuiButton: {

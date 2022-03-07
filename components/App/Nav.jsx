@@ -1,4 +1,17 @@
-import { AppBar, IconButton, List, ListItem, ListItemText, Toolbar, Typography, useScrollTrigger, Box, Button, Tooltip } from '@mui/material';
+import {
+    AppBar,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    Toolbar,
+    Typography,
+    useScrollTrigger,
+    Box,
+    Button,
+    Tooltip,
+    useTheme, useMediaQuery
+} from '@mui/material';
 import React from 'react';
 import Context from './Context';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -7,6 +20,8 @@ import { useRouter } from 'next/router';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { makeStyles } from '@mui/styles';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuMobile from "./MenuMobile";
 
 function ElevationScroll ({ children }) {
     const trigger = useScrollTrigger({
@@ -36,10 +51,10 @@ const pages = [
         name: 'Portfolio',
         path: '/portfolio',
     },
-    {
-        name: 'Blog',
-        path: '/blog',
-    }
+    // {
+    //     name: 'Blog',
+    //     path: '/blog',
+    // }
 ];
 
 const socialNetworks = [
@@ -63,51 +78,79 @@ const useStyles = makeStyles((theme) => ({
 function Nav ({  }) {
     const classes = useStyles();
     const { colorMode, toggleColorMode } = React.useContext(Context);
-    const router = useRouter();
+    const router = useRouter(),
+        theme = useTheme(),
+        isMd = useMediaQuery(theme.breakpoints.up('md')),
+        [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
 
     const handleRoute = (path) => {
         router.push(path);
     };
 
-    return <ElevationScroll>
-        <AppBar classes={{root: classes.paper}}>
-            <Toolbar>
-                {/* <IconButton onClick={toggleColorMode} color='inherit'>
-                    {colorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton> */}
-                <Box pr={4}>
-                    <Typography style={{fontWeight: 'bold', fontSize: '2rem'}}>{'</>'}</Typography>
-                </Box>
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    {pages.map(({ name, path }) => (
-                    <Button
-                        key={name}
-                        onClick={() => handleRoute(path)}
-                        sx={{ my: 2, color: 'white', display: 'block' }}
-                    >
-                        {name}
-                    </Button>
-                    ))}
-                </Box>
-                {
-                    socialNetworks.map(({ icon, name, link }) => (
-                        <Tooltip key={name} title={name}>
-                            <Box 
-                                sx={{ mr: 1, color: 'white', display: 'block' }}
-                            >
-                                    <IconButton onClick={() => window.open(link)}>
-                                        {icon}
-                                    </IconButton>
+    const toggleMenuMobile = () => {
+        setIsMenuMobileOpen(!isMenuMobileOpen);
+    };
+
+    return <>
+        <MenuMobile open={isMenuMobileOpen} onClose={toggleMenuMobile} options={pages} />
+        <ElevationScroll>
+            <AppBar classes={{root: classes.paper}}>
+                <Toolbar>
+                    {/* <IconButton onClick={toggleColorMode} color='inherit'>
+                        {colorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </IconButton> */}
+                    {
+                        isMd
+                        ? <>
+                            <Box pr={4}>
+                                <Typography
+                                    style={{fontWeight: 'bold', fontSize: '2rem', cursor: 'pointer'}}
+                                    onClick={() => handleRoute('/')}
+                                >
+                                    {'</>'}
+                                </Typography>
                             </Box>
-                        </Tooltip>
-                    ))
-                }
-                <Button variant={'contained'} color={'secondary'}>
-                    Contact
-                </Button>
-            </Toolbar>
-        </AppBar>
-    </ElevationScroll> 
+                            <Box sx={{ flexGrow: 1, display: 'flex' }}>
+                                {pages.map(({ name, path }) => (
+                                    <Button
+                                        key={name}
+                                        onClick={() => handleRoute(path)}
+                                        sx={{ my: 2, mr: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {name}
+                                    </Button>
+                                ))}
+                            </Box>
+                        </>
+                        : <Box sx={{ flexGrow: 1 }}>
+                            <IconButton onClick={toggleMenuMobile}>
+                                <MenuIcon />
+                            </IconButton>
+                        </Box>
+                    }
+                    {
+                        socialNetworks.map(({ icon, name, link }) => (
+                            <Tooltip key={name} title={name}>
+                                <Box
+                                    sx={{ mr: 1, color: 'white', display: 'block' }}
+                                >
+                                        <IconButton onClick={() => window.open(link)}>
+                                            {icon}
+                                        </IconButton>
+                                </Box>
+                            </Tooltip>
+                        ))
+                    }
+                    {
+                        router.pathname !== '/contact' &&
+                        <Button variant={'contained'} color={'secondary'} onClick={() => handleRoute('/contact')}>
+                            Contact
+                        </Button>
+                    }
+                </Toolbar>
+            </AppBar>
+        </ElevationScroll>
+    </>
 }
 
 export default Nav
