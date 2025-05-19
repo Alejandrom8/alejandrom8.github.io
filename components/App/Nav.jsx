@@ -14,8 +14,6 @@ import {
 } from '@mui/material';
 import React from 'react';
 import Context from './Context';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useRouter } from 'next/router';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -30,7 +28,11 @@ function ElevationScroll ({ children }) {
       });
     
       return React.cloneElement(children, {
-        elevation: trigger ? 4 : 0,
+        elevation: trigger ? 0 : 0,
+          style: trigger ? {
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(10px)',
+          } : { }
       });
 }
 
@@ -40,16 +42,16 @@ const pages = [
         path: '/',
     },
     {
-        name: 'About me',
+        name: 'My services',
         path: '/me',
-    },
-    {
-        name: 'Resume',
-        path: '/resume',
     },
     {
         name: 'Portfolio',
         path: '/portfolio',
+    },
+    {
+        name: '¿Who am I?',
+        path: '/who-am-i',
     },
     // {
     //     name: 'Blog',
@@ -72,6 +74,8 @@ const socialNetworks = [
 
 const useStyles = makeStyles((theme) => ({
     paper: {
+        backgroundColor: 'transparent',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
     }
 }));
 
@@ -94,17 +98,14 @@ function Nav ({  }) {
     return <>
         <MenuMobile open={isMenuMobileOpen} onClose={toggleMenuMobile} options={pages} />
         <ElevationScroll>
-            <AppBar classes={{root: classes.paper}}>
-                <Toolbar>
-                    {/* <IconButton onClick={toggleColorMode} color='inherit'>
-                        {colorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                    </IconButton> */}
+            <AppBar classes={{root: classes.paper }}>
+                <Toolbar style={{ display: 'flex', alignItems: 'center' }} mx={10}>
                     {
                         isMd
                         ? <>
                             <Box pr={4}>
                                 <Typography
-                                    style={{fontWeight: 'bold', fontSize: '2rem', cursor: 'pointer'}}
+                                    style={{fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer'}}
                                     onClick={() => handleRoute('/')}
                                 >
                                     {'</>'}
@@ -115,7 +116,7 @@ function Nav ({  }) {
                                     <Button
                                         key={name}
                                         onClick={() => handleRoute(path)}
-                                        sx={{ my: 2, mr: 2, color: 'white', display: 'block' }}
+                                        sx={{ my: 2, mr: 2, color: 'inherit', display: 'block' }}
                                     >
                                         {name}
                                     </Button>
@@ -143,7 +144,7 @@ function Nav ({  }) {
                     }
                     {
                         router.pathname !== '/contact' &&
-                        <Button variant={'contained'} color={'secondary'} onClick={() => handleRoute('/contact')}>
+                        <Button variant={'outlined'} color={'primary'} onClick={() => handleRoute('/contact')} style={{ height: '30px' }}>
                             Contact
                         </Button>
                     }

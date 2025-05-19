@@ -5,7 +5,6 @@ import Nav from './Nav';
 function Container ({ children }) {
     return <React.Fragment>
         <Nav />
-        <Toolbar />
         <main>
             {children}
         </main>
