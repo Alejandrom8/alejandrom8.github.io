@@ -6,11 +6,6 @@ const ServiceCard = ({ title, description, image, SectionIcon }) => {
 
   return <Card className={classes.root}>
     <CardActionArea style={{ height: '100%' }}>
-      <CardMedia
-        sx={{ height: 200 }}
-        image={image}
-        title="green iguana"
-      />
       <CardContent className={classes.container}>
         {
           SectionIcon && <Box sx={{ width: '100%', height: '150px', display: 'grid', placeItems: 'center' }}>
@@ -26,6 +21,11 @@ const ServiceCard = ({ title, description, image, SectionIcon }) => {
           {description}
         </Typography>
       </CardContent>
+      <CardMedia
+        sx={{ height: 220 }}
+        image={image}
+        title="green iguana"
+      />
     </CardActionArea>
   </Card>
 };
@@ -33,17 +33,19 @@ const ServiceCard = ({ title, description, image, SectionIcon }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '450px',
-    minHeight: '400px',
+    minHeight: '500px',
     margin: theme.spacing(3),
+    marginLeft: 0,
+    marginRight: 0,
     borderRadius: '20px',
     backgroundColor: '#111c45',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
   },
   container: {
     paddingBottom: theme.spacing(4),
     textAlign: 'center',
-    height: '100%',
+    height: '55%',
   },
   title: {
     fontWeight: 'bold',

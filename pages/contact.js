@@ -70,11 +70,6 @@ function ContactPage () {
     }, [router, name, email, message]);
 
     return <Box pt={4} pb={4}>
-        <Particles
-            id={'tsparticles'}
-            style={{ zIndex: -1, position: 'relative' }}
-            options={ParticlesConfig}
-        />
         <Grid container className={classes.root}>
             <Grid item xs={12}>
                 <Box width={'100%'} minHeight={isMd ? '80vh' : '60vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>

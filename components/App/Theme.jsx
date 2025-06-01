@@ -48,6 +48,12 @@ let Theme = createTheme({
                 root: {
                     borderRadius: '16px',
                     fontWeight: 'bold'
+                },
+                text: {
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                        backgroundColor: 'transparent',
+                    }
                 }
             }
         }

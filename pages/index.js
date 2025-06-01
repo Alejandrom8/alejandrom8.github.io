@@ -6,22 +6,20 @@ import {
   Container,
   useMediaQuery,
   useTheme,
-  Toolbar,
+  Toolbar, Tabs, Tab,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import Head from 'next/head';
 import Particles from "react-tsparticles";
 
-
-import 'swiper/css';
-import "swiper/css/grid";
-import 'swiper/css/pagination';
-
 import clsx from 'clsx';
 import ParticlesConfig from "../config/particles.json";
 import HomeSection from "../components/Home/HomeSection";
 import ServiceCard from "../components/Home/ServiceCard";
+import Footer from "../components/App/Footer";
+import TechStackTabs from "../components/Home/TechStackTabs";
+import ContactForm from "../components/Home/ContactForm";
 
 function Home() {
   const classes = useStyles();
@@ -40,8 +38,8 @@ function Home() {
     <div className={classes.root}>
       <Toolbar />
       <section className={clsx(classes.heading, classes.block)}>
-        <Container style={{height:'100%'}} disableGutters>
-          <Grid container spacing={1} style={{height: '100%'}}>
+        <Container disableGutters={isMd}>
+          <Grid container spacing={1}>
             <Grid item xs={12} md={6}>
               <Box sx={{
                 width: '100%',
@@ -49,10 +47,10 @@ function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(4, 12, 33)'
               }}>
                 <Box sx={{
-                  width: '80%',
+                  width: '100%',
+                  backgroundColor: 'rgba(4, 12, 33)',
                 }}>
                   <Typography variant={'h1'} gutterBottom className={classes.howdy}>
                     Hi, I'm Alex, and I'm a <br /><span className={classes.contrastText}>{"<Full Stack Engineer/>"}</span>
@@ -74,7 +72,7 @@ function Home() {
             </Grid>
             {
               isMd && <Grid item xs={12} md={6}>
-                <Box sx={{display: 'flex', justifyContent: 'center', width: '100%', alignItems: 'center', height: '100%'}}>
+                <Box sx={{display: 'flex', justifyContent: 'right', width: '100%', alignItems: 'center', height: '100%'}}>
                   <div className={classes.me} />
                 </Box>
               </Grid>
@@ -82,23 +80,23 @@ function Home() {
           </Grid>
         </Container>
       </section>
-      <HomeSection title={'My Services'} style={{ }} titleProps={{ style: { textAlign: 'center', width: '100%', marginTop: '100px' } }}>
-        <Grid container>
-          <Grid item sm={12} md={4}>
+      <HomeSection id={'services'} title={'My Services'} topSeparation={false}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
             <ServiceCard
               title={'Build your personal website'}
               image={"/website.png"}
               description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={3}>
             <ServiceCard
               title={'Hybrid Mobile Solutions'}
               image={"/mobile.png"}
               description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={3}>
             <ServiceCard
               title={'Data Mining for Your Business'}
               image={"/webscraping.png"}
@@ -107,6 +105,14 @@ function Home() {
           </Grid>
         </Grid>
       </HomeSection>
+      {/*<HomeSection title={'Featured Projects'}>*/}
+      {/*  Featured projects*/}
+      {/*</HomeSection>*/}
+      <HomeSection title={'My Tech Stack'} style={{ paddingBottom: '50px' }}>
+        <TechStackTabs />
+      </HomeSection>
+      <ContactForm />
+      <Footer />
     </div>
   </>
 }
@@ -121,16 +127,17 @@ const useStyles = makeStyles((theme) => ({
   },
   block: {
     width: '100%',
-    padding: theme.spacing(2, 0),
     [theme.breakpoints.down('md')]: {
     }
   },
   heading: {
-    height: '85vh',
-    paddingTop: theme.spacing(6),
+    height: '95vh',
     color: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     [theme.breakpoints.down('md')]: {
-      height: '60vh',
+      height: '95vh',
     },
   },
   howdy: {
@@ -147,8 +154,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   me: {
-    width: '400px',
-    height: '410px',
+    width: '390px',
+    height: '400px',
     borderRadius: '50%',
     backgroundPosition: 'center',
     backgroundSize: 'cover',

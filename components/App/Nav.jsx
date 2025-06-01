@@ -12,14 +12,16 @@ import {
     Tooltip,
     useTheme, useMediaQuery
 } from '@mui/material';
+import {styled} from '@mui/material/styles';
 import React from 'react';
 import Context from './Context';
 import { useRouter } from 'next/router';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { makeStyles } from '@mui/styles';
+import {makeStyles} from '@mui/styles'
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuMobile from "./MenuMobile";
+import SocialNetworks from "./SocialNetworks";
 
 function ElevationScroll ({ children }) {
     const trigger = useScrollTrigger({
@@ -36,6 +38,29 @@ function ElevationScroll ({ children }) {
       });
 }
 
+const UnderlineButton = styled(Button)(({ theme }) => ({
+    position: 'relative',
+    overflow: 'hidden',
+    color: theme.palette.text.primary,
+    background: 'none',
+
+    '&::after': {
+        content: '""',
+        position: 'absolute',
+        left: '50%',
+        bottom: 4,
+        width: 0,
+        height: '2px',
+        backgroundColor: theme.palette.primary.main,
+        transition: 'all 0.4s ease',
+        transform: 'translateX(-50%)',
+    },
+
+    '&:hover::after': {
+        width: '100%',
+    },
+}));
+
 const pages = [
     {
         name: 'Home',
@@ -43,7 +68,7 @@ const pages = [
     },
     {
         name: 'My services',
-        path: '/me',
+        path: '/#services',
     },
     {
         name: 'Portfolio',
@@ -59,18 +84,6 @@ const pages = [
     // }
 ];
 
-const socialNetworks = [
-    {
-        name: 'Linkedin',
-        icon: <LinkedInIcon/>,
-        link: 'https://www.linkedin.com/in/alejandro-gomez-dev'
-    },
-    {
-        name: 'Github',
-        icon: <GitHubIcon />,
-        link: 'https://github.com/Alejandrom8'
-    }
-];
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -113,13 +126,13 @@ function Nav ({  }) {
                             </Box>
                             <Box sx={{ flexGrow: 1, display: 'flex' }}>
                                 {pages.map(({ name, path }) => (
-                                    <Button
+                                    <UnderlineButton
                                         key={name}
                                         onClick={() => handleRoute(path)}
                                         sx={{ my: 2, mr: 2, color: 'inherit', display: 'block' }}
                                     >
                                         {name}
-                                    </Button>
+                                    </UnderlineButton>
                                 ))}
                             </Box>
                         </>
@@ -129,25 +142,10 @@ function Nav ({  }) {
                             </IconButton>
                         </Box>
                     }
-                    {
-                        socialNetworks.map(({ icon, name, link }) => (
-                            <Tooltip key={name} title={name}>
-                                <Box
-                                    sx={{ mr: 1, color: 'white', display: 'block' }}
-                                >
-                                        <IconButton onClick={() => window.open(link)}>
-                                            {icon}
-                                        </IconButton>
-                                </Box>
-                            </Tooltip>
-                        ))
-                    }
-                    {
-                        router.pathname !== '/contact' &&
-                        <Button variant={'outlined'} color={'primary'} onClick={() => handleRoute('/contact')} style={{ height: '30px' }}>
-                            Contact
-                        </Button>
-                    }
+                    <SocialNetworks />
+                    <Button variant={'outlined'} color={'secondary'} onClick={() => handleRoute('/#contact')} style={{ height: '30px' }}>
+                        Contact
+                    </Button>
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
