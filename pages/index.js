@@ -80,23 +80,23 @@ function Home() {
           </Grid>
         </Container>
       </section>
-      <HomeSection id={'services'} title={'My Services'} topSeparation={false}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
+      <HomeSection id={'services'} title={'My Services'} topSeparation={false} link={'/'} linkName={'Explore all services'}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={5.5}>
             <ServiceCard
               title={'Build your personal website'}
               image={"/website.png"}
               description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}
             />
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3.25}>
             <ServiceCard
               title={'Hybrid Mobile Solutions'}
               image={"/mobile.png"}
               description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}
             />
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3.25}>
             <ServiceCard
               title={'Data Mining for Your Business'}
               image={"/webscraping.png"}
@@ -105,12 +105,35 @@ function Home() {
           </Grid>
         </Grid>
       </HomeSection>
-      {/*<HomeSection title={'Featured Projects'}>*/}
-      {/*  Featured projects*/}
-      {/*</HomeSection>*/}
-      <HomeSection title={'My Tech Stack'} style={{ paddingBottom: '50px' }}>
-        <TechStackTabs />
+      <HomeSection title={'Featured Projects'} link={'/'} linkName={'See all projects'}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <ServiceCard
+              title={'Build your personal website'}
+              description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <ServiceCard
+              title={'Hybrid Mobile Solutions'}
+              description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}
+            />
+          </Grid>
+        </Grid>
       </HomeSection>
+      {/*<HomeSection title={'My Tech Stack'}>*/}
+      {/*  <TechStackTabs />*/}
+      {/*</HomeSection>*/}
+      <section className={classes.techStackSection}>
+        <Container disableGutters>
+          <Typography variant="h2" sx={{ marginBottom: '40px' }}>
+            My Tech Stack
+          </Typography>
+        </Container>
+        <Box sx={{ width: '100%' }}>
+          <TechStackTabs />
+        </Box>
+      </section>
       <ContactForm />
       <Footer />
     </div>
@@ -160,13 +183,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundImage: 'url(/me_yellow.jpeg)',
+    backgroundImage: 'url(/me_yellow.webp)',
     border: '5px solid #FCAB10',
     '-webkit-user-select': 'none',
     '-khtml-user-select': 'none',
     '-moz-user-select': 'none',
     '-o-user-select': 'none',
     userSelect: 'none',
+  },
+  techStackSection: {
+    width: '100%',
+    paddingTop: '130px',
+    paddingBottom: '80px',
   }
 }))
 

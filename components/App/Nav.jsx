@@ -72,11 +72,11 @@ const pages = [
     },
     {
         name: 'Portfolio',
-        path: '/portfolio',
+        path: '/',
     },
     {
         name: '¿Who am I?',
-        path: '/who-am-i',
+        path: '/',
     },
     // {
     //     name: 'Blog',

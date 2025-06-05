@@ -22,7 +22,7 @@ const ServiceCard = ({ title, description, image, SectionIcon }) => {
         </Typography>
       </CardContent>
       <CardMedia
-        sx={{ height: 220 }}
+        sx={{ height: 280 }}
         image={image}
         title="green iguana"
       />
@@ -33,23 +33,29 @@ const ServiceCard = ({ title, description, image, SectionIcon }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '450px',
-    minHeight: '500px',
+    minHeight: '65vh',
     margin: theme.spacing(3),
+    marginBottom: 0,
     marginLeft: 0,
     marginRight: 0,
-    borderRadius: '20px',
+    borderRadius: '25px',
     backgroundColor: '#111c45',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    //border: '1px solid rgba(255, 255, 255, 0.1)',
+    border: 0,
+    [theme.breakpoints.down('md')]: {
+      minHeight: '200px',
+    }
   },
   container: {
     paddingBottom: theme.spacing(4),
-    textAlign: 'center',
+    textAlign: 'left',
     height: '55%',
+    padding: theme.spacing(2.5),
   },
   title: {
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     marginTop: 10,
   }
 }));

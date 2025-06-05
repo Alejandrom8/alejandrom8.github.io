@@ -2,8 +2,15 @@ import {Box, IconButton, Tooltip} from "@mui/material";
 import React from "react";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const socialNetworks = [
+  {
+    name: 'Instagram',
+    icon: <InstagramIcon/>,
+    link: 'https://www.instagram.com/alejandro_lpts/',
+  },
   {
     name: 'Linkedin',
     icon: <LinkedInIcon/>,
@@ -13,7 +20,7 @@ const socialNetworks = [
     name: 'Github',
     icon: <GitHubIcon />,
     link: 'https://github.com/Alejandrom8'
-  }
+  },
 ];
 
 export default function SocialNetworks() {
