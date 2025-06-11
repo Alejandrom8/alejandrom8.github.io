@@ -6,7 +6,7 @@ import {
   Container,
   useMediaQuery,
   useTheme,
-  Toolbar, Tabs, Tab,
+  Toolbar, Tabs, Tab, Card, CardActionArea, CardContent, CardMedia,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
@@ -20,11 +20,37 @@ import ServiceCard from "../components/Home/ServiceCard";
 import Footer from "../components/App/Footer";
 import TechStackTabs from "../components/Home/TechStackTabs";
 import ContactForm from "../components/Home/ContactForm";
+import { useTranslation, Trans } from 'react-i18next';
+import ServiceCardCarousel from "../components/Home/ProjectsCarousel";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const cards = [
+  <ServiceCard
+    title={'Data Mining for Your Business'}
+    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
+  />,
+  <ServiceCard
+    title={'Data Mining for Your Business'}
+    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
+  />,
+  <ServiceCard
+    title={'Data Mining for Your Business'}
+    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
+  />,
+  <ServiceCard
+    title={'Data Mining for Your Business'}
+    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
+  />,
+];
 
 function Home() {
   const classes = useStyles();
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'));
+  const { t} = useTranslation();
+
 
   return <>
     <Head>
@@ -53,13 +79,25 @@ function Home() {
                   backgroundColor: 'rgba(4, 12, 33)',
                 }}>
                   <Typography variant={'h1'} gutterBottom className={classes.howdy}>
-                    Hi, I'm Alex, and I'm a <br /><span className={classes.contrastText}>{"<Full Stack Engineer/>"}</span>
+                    <Trans
+                      i18nKey="hero"
+                      shouldUnescape={true}
+                      components={{
+                        0: <span className={classes.contrastText} />,
+                        1: <span />,
+                      }}
+                      values={{
+                        role: `&lt;Full Stack Engineer/&gt;`
+                      }}
+                    />
                   </Typography>
                   <Typography style={{ lineHeight: 1.6, fontSize: '1.3rem', fontWeight: '500', color: '#DDD' }} my={4}>
-                    Full Stack Software Engineer with 5+ years of experience in high-scale <b style={{ fontSize: '1.3rem', color: '#fff' }}>Web Development</b>, <b style={{ fontSize: '1.3rem', color: '#fff' }}>Big
-                    Data</b> and <b style={{ fontSize: '1.3rem', color: '#fff' }}>Web Scraping</b>. Skilled in optimizing web performance and architecting cloud-based solutions.
-                    Passionate about building scalable systems that drive business impact and improve the
-                    world 🚀.
+                    <Trans
+                      i18nKey="hero.description"
+                      components={{
+                        b: <b style={{ fontSize: '1.3rem', color: '#fff' }} />
+                      }}
+                    />
                   </Typography>
                   <Box display={'flex'} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box pr={isMd ? 2 : 0} pb={isMd ? 0 : 2}>
@@ -106,34 +144,35 @@ function Home() {
         </Grid>
       </HomeSection>
       <HomeSection title={'Featured Projects'} link={'/'} linkName={'See all projects'}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <ServiceCard
-              title={'Build your personal website'}
-              description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <ServiceCard
-              title={'Hybrid Mobile Solutions'}
-              description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}
-            />
-          </Grid>
-        </Grid>
+        <ServiceCardCarousel items={cards} />
+        {/*<Grid container spacing={3}>*/}
+        {/*  <Grid item xs={12} md={6}>*/}
+        {/*    <ServiceCard*/}
+        {/*      title={'Build your personal website'}*/}
+        {/*      description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}*/}
+        {/*    />*/}
+        {/*  </Grid>*/}
+        {/*  <Grid item xs={12} md={6}>*/}
+        {/*    <ServiceCard*/}
+        {/*      title={'Hybrid Mobile Solutions'}*/}
+        {/*      description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}*/}
+        {/*    />*/}
+        {/*  </Grid>*/}
+        {/*</Grid>*/}
       </HomeSection>
-      {/*<HomeSection title={'My Tech Stack'}>*/}
-      {/*  <TechStackTabs />*/}
-      {/*</HomeSection>*/}
-      <section className={classes.techStackSection}>
-        <Container disableGutters>
-          <Typography variant="h2" sx={{ marginBottom: '40px' }}>
-            My Tech Stack
-          </Typography>
-        </Container>
-        <Box sx={{ width: '100%' }}>
-          <TechStackTabs />
-        </Box>
-      </section>
+      <HomeSection title={'My Tech Stack'}>
+        <TechStackTabs />
+      </HomeSection>
+      {/*<section className={classes.techStackSection}>*/}
+      {/*  <Container disableGutters>*/}
+      {/*    <Typography variant="h2" sx={{ marginBottom: '40px' }}>*/}
+      {/*      My Tech Stack*/}
+      {/*    </Typography>*/}
+      {/*  </Container>*/}
+      {/*  <Box sx={{ width: '100%' }}>*/}
+      {/*    <TechStackTabs />*/}
+      {/*  </Box>*/}
+      {/*</section>*/}
       <ContactForm />
       <Footer />
     </div>

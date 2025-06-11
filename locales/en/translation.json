@@ -1,0 +1,10 @@
+{
+  "hero": "Hi, I'm Alex, and I'm a <1><0>{{role}}</0></1>",
+  "hero.description": "Full Stack Software Engineer with 5+ years of experience in high-scale <b>Web Development</b>, <b>Big Data</b> and <b>Web Scraping</b>. Skilled in optimizing web performance and architecting cloud-based solutions. Passionate about building scalable systems that drive business impact and improve the world 🚀.",
+  "nav.item.home": "Home",
+  "nav.item.services": "Services",
+  "nav.item.portfolio": "Portfolio",
+  "nav.item.who": "Who I am?",
+  "nav.button.contact": "Contact",
+  "footer.quote": "\"The people who are crazy enough to think they can change the world are the ones who do.\" - Steve Jobs\n"
+}

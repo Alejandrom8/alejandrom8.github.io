@@ -56,7 +56,9 @@ let Theme = createTheme({
                     }
                 }
             }
-        }
+        },
+        MuiContainer: {
+        },
     }
 });
 

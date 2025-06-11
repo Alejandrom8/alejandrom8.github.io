@@ -3,6 +3,7 @@ import { CssBaseline, useMediaQuery } from "@mui/material"
 import { ThemeProvider } from "@mui/system"
 import { createTheme } from '@mui/material/styles';
 import { Container, themeSelector, Context, Theme } from '../components/App'
+import '../i18n';
 
 function MyApp({ Component, pageProps }) {
   const [mode, setMode] = React.useState('dark'),

@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     topSeparation: {
-        paddingTop: '100px',
+        paddingTop: '150px',
     },
     title: {
         textAlign: 'left',

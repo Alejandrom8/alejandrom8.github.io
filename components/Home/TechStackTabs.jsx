@@ -61,100 +61,100 @@ function SkillCard ({ skill }) {
     </Box>
 }
 
-export default function TechStackTabs() {
-    return <>
-        <Box sx={{
-            width: '100%',
-            backgroundColor: 'transparent',
-            borderRadius: '28px',
-            // borderTopLeftRadius: 0, borderTopRightRadius: 0
-        }}>
-            <Marquee direction="left" speed={40}>
-                {
-                    skills.sort((a, b) => {
-                        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                        return 0;
-                    }).map((skill, index) => (
-                        <SkillCard key={index} skill={skill} />
-                    ))
-                }
-            </Marquee>
-          <Marquee direction="right" speed={40}>
-            {
-              skills.sort((a, b) => {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                return 0;
-              }).map((skill, index) => (
-                <SkillCard key={index} skill={skill} />
-              ))
-            }
-          </Marquee>
-          <Marquee direction="left" speed={40}>
-            {
-              skills.sort((a, b) => {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
-                if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-                return 0;
-              }).map((skill, index) => (
-                <SkillCard key={index} skill={skill} />
-              ))
-            }
-          </Marquee>
-        </Box>
-    </>;
-};
-
 // export default function TechStackTabs() {
-//   return <>
-//     <Box sx={{
-//       width: '100%',
-//       backgroundColor: 'transparent',
-//       borderRadius: '28px',
-//       // borderTopLeftRadius: 0, borderTopRightRadius: 0
-//     }}>
-//       <Grid container sx={{ width: '100%', marginTop: '2vh' }} justifyContent={'center'} spacing={3}>
-//         {
-//           skills.sort((a, b) => {
-//             if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-//             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-//             return 0;
-//           }).map((skill, index) => (
-//             <Grid item xs={6} md={2} key={index} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-//               <Box
-//                 sx={{
-//                   display: 'flex',
-//                   flexDirection: 'row',
-//                   alignItems: 'center',
-//                   padding: 2,
-//                   justifyContent: 'center',
-//                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
-//                   backdropFilter: 'blur(10px)',
-//                   borderRadius: '16px',
-//                   width: '240px',
-//                   height: '80px',
-//                   border: '1px solid rgba(255, 255, 255, 0.5)',
-//                   transition: 'all 0.3s ease',
-//                   userSelect: 'none',
-//                   color: '#BBB',
-//                   '&:hover': {
-//                     backgroundColor: 'rgba(0, 123, 255, 0.2)',
-//                     boxShadow: '0 0 8px rgba(0, 123, 255, 0.5)',
-//                     cursor: 'pointer',
-//                     color: '#fff'
-//                   }
-//                 }}
-//               >
-//                 <Box marginRight={'20px'}>
-//                   <StackIcon name={skill.name} style={{ width: '40px', height: '40px' }}/>
-//                 </Box>
-//                 <Typography color={'inherit'} fontSize={'14px'} fontWeight={'bold'}>{skill.displayName}</Typography>
-//               </Box>
-//             </Grid>
-//           ))
-//         }
-//       </Grid>
-//     </Box>
-//   </>
-// }
+//     return <>
+//         <Box sx={{
+//             width: '100%',
+//             backgroundColor: 'transparent',
+//             borderRadius: '28px',
+//             // borderTopLeftRadius: 0, borderTopRightRadius: 0
+//         }}>
+//             <Marquee direction="left" speed={40}>
+//                 {
+//                     skills.sort((a, b) => {
+//                         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+//                         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+//                         return 0;
+//                     }).map((skill, index) => (
+//                         <SkillCard key={index} skill={skill} />
+//                     ))
+//                 }
+//             </Marquee>
+//           <Marquee direction="right" speed={40}>
+//             {
+//               skills.sort((a, b) => {
+//                 if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+//                 if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+//                 return 0;
+//               }).map((skill, index) => (
+//                 <SkillCard key={index} skill={skill} />
+//               ))
+//             }
+//           </Marquee>
+//           <Marquee direction="left" speed={40}>
+//             {
+//               skills.sort((a, b) => {
+//                 if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+//                 if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+//                 return 0;
+//               }).map((skill, index) => (
+//                 <SkillCard key={index} skill={skill} />
+//               ))
+//             }
+//           </Marquee>
+//         </Box>
+//     </>;
+// };
+
+export default function TechStackTabs() {
+  return <>
+    <Box sx={{
+      width: '100%',
+      backgroundColor: 'transparent',
+      borderRadius: '28px',
+      // borderTopLeftRadius: 0, borderTopRightRadius: 0
+    }}>
+      <Grid container sx={{ width: '100%', marginTop: '2vh' }} justifyContent={'center'} spacing={3}>
+        {
+          skills.sort((a, b) => {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            return 0;
+          }).map((skill, index) => (
+            <Grid item xs={6} md={2} key={index} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: 2,
+                  justifyContent: 'center',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '16px',
+                  width: '240px',
+                  height: '80px',
+                  border: '1px solid rgba(255, 255, 255, 0.5)',
+                  transition: 'all 0.3s ease',
+                  userSelect: 'none',
+                  color: '#BBB',
+                  '&:hover': {
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    boxShadow: '0 0 8px rgba(0, 123, 255, 0.5)',
+                    cursor: 'pointer',
+                    color: '#fff'
+                  }
+                }}
+              >
+                <Box marginRight={'20px'}>
+                  <StackIcon name={skill.name} style={{ width: '40px', height: '40px' }}/>
+                </Box>
+                <Typography color={'inherit'} fontSize={'14px'} fontWeight={'bold'}>{skill.displayName}</Typography>
+              </Box>
+            </Grid>
+          ))
+        }
+      </Grid>
+    </Box>
+  </>
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import {makeStyles} from "@mui/styles";
+import ScrollTopButton from "./ScrollTopButton";
 
 function Container ({ children }) {
     const classes = useStyles();
@@ -9,6 +10,7 @@ function Container ({ children }) {
         <main>
             {children}
         </main>
+        <ScrollTopButton />
     </React.Fragment>
 }
 

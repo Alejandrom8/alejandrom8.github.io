@@ -6,11 +6,11 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 const socialNetworks = [
-  {
-    name: 'Instagram',
-    icon: <InstagramIcon/>,
-    link: 'https://www.instagram.com/alejandro_lpts/',
-  },
+  // {
+  //   name: 'Instagram',
+  //   icon: <InstagramIcon/>,
+  //   link: 'https://www.instagram.com/alejandro_lpts/',
+  // },
   {
     name: 'Linkedin',
     icon: <LinkedInIcon/>,

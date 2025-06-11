@@ -1,63 +1,93 @@
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Icon, Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 
-const ServiceCard = ({ title, description, image, SectionIcon }) => {
+const ServiceCard = ({ title, description, image, SectionIcon, imageAlt }) => {
   const classes = useStyles();
 
-  return <Card className={classes.root}>
-    <CardActionArea style={{ height: '100%' }}>
-      <CardContent className={classes.container}>
-        {
-          SectionIcon && <Box sx={{ width: '100%', height: '150px', display: 'grid', placeItems: 'center' }}>
-            <Icon style={{ fontSize: 90 }}>
-              <SectionIcon fontSize={'inherit'} color={'secondary'} />
-            </Icon>
-          </Box>
-        }
-        <Typography variant={'h5'} gutterBottom className={classes.title}>
-          {title}
-        </Typography>
-        <Typography sx={{ paddingTop: 2, fontSize: 16, fontWeight: 500, lineHeight: 1.5, color: '#DDD' }}>
-          {description}
-        </Typography>
-      </CardContent>
-      <CardMedia
-        sx={{ height: 280 }}
-        image={image}
-        title="green iguana"
-      />
-    </CardActionArea>
-  </Card>
+  return (
+    <Card className={classes.root}>
+      <CardActionArea style={{ height: '100%' }}>
+        <CardMedia
+          component="img"
+          height="250"
+          image={image}
+          alt={imageAlt || title}
+          sx={{ borderRadius: '0 0 25px 25px', objectFit: 'cover' }}
+        />
+        <CardContent className={classes.container}>
+          {SectionIcon && (
+            <Box
+              sx={{
+                width: '100%',
+                height: 150,
+                display: 'grid',
+                placeItems: 'center',
+              }}
+            >
+              <SectionIcon fontSize="large" color="secondary" />
+            </Box>
+          )}
+
+          <Typography variant="h5" gutterBottom className={classes.title}>
+            {title}
+          </Typography>
+          <Typography
+            sx={{
+              paddingTop: 2,
+              fontSize: 16,
+              fontWeight: 500,
+              lineHeight: 1.5,
+              color: '#DDD',
+            }}
+          >
+            {description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 };
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '450px',
+    height: 450,
     minHeight: '65vh',
-    margin: theme.spacing(3),
-    marginBottom: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    borderRadius: '25px',
+    margin: theme.spacing(3, 0, 0, 0),
+    borderRadius: 20,
     backgroundColor: '#111c45',
     backdropFilter: 'blur(10px)',
-    //border: '1px solid rgba(255, 255, 255, 0.1)',
+    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     border: 0,
+    '&:hover': {
+      transform: 'translateY(-8px)',
+      boxShadow: '0 16px 32px rgba(0,0,0,0.5)',
+    },
     [theme.breakpoints.down('md')]: {
-      minHeight: '200px',
-    }
+      minHeight: 250,
+    },
   },
   container: {
-    paddingBottom: theme.spacing(4),
+    padding: theme.spacing(3),
     textAlign: 'left',
-    height: '55%',
-    padding: theme.spacing(2.5),
+    height: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
-    textAlign: 'left',
-    marginTop: 10,
-  }
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
+    color: theme.palette.common.white,
+    textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+  },
+  description: {
+    color: theme.palette.grey[300],
+    fontWeight: 400,
+    lineHeight: 1.6,
+    paddingTop: theme.spacing(1),
+  },
 }));
 
 export default ServiceCard;

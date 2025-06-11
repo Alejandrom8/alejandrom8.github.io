@@ -1,0 +1,10 @@
+{
+  "hero": "Hola, soy Alex, y soy un <1><0>{{role}}</0></1>",
+  "hero.description": "Ingeniero de Software Full Stack con más de 5 años de experiencia en <b>Desarrollo Web</b>, <b>Big Data</b> y <b>Web Scraping</b> a gran escala. Especializado en optimización de rendimiento web y arquitectura de soluciones en la nube. Apasionado por construir sistemas escalables que generen impacto y mejoren el mundo 🚀.",
+  "nav.item.home": "Inicio",
+  "nav.item.services": "Servicios",
+  "nav.item.portfolio": "Portafolio",
+  "nav.item.who": "¿Quién soy?",
+  "nav.button.contact": "Contacto",
+  "footer.quote": "\"Las personas lo suficientemente locas como para pensar que pueden cambiar el mundo son las que lo hacen.\" - Steve Jobs\n"
+}

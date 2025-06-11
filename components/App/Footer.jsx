@@ -1,13 +1,15 @@
 import {makeStyles} from "@mui/styles";
 import {Box, Container, Divider, Stack} from "@mui/material";
 import SocialNetworks from "./SocialNetworks";
+import {useTranslation} from "react-i18next";
 
 export default function Footer() {
   const classes = useStyles();
+  const { t } = useTranslation();
   return <Box className={classes.footer}>
     <Container className={classes.container}>
       <Box sx={{ marginBottom: 3, textAlign: 'center' }}>
-        "The people who are crazy enough to think they can change the world are the ones who do." - Apple
+        {t('footer.quote')}
       </Box>
       <Divider />
       <Box style={{ display: 'flex', marginTop: '20px', alignItems: 'center', justifyContent: 'space-between' }}>

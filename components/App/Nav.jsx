@@ -1,27 +1,23 @@
 import {
     AppBar,
     IconButton,
-    List,
-    ListItem,
-    ListItemText,
     Toolbar,
     Typography,
     useScrollTrigger,
     Box,
     Button,
-    Tooltip,
     useTheme, useMediaQuery
 } from '@mui/material';
 import {styled} from '@mui/material/styles';
 import React from 'react';
 import Context from './Context';
 import { useRouter } from 'next/router';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import {makeStyles} from '@mui/styles'
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuMobile from "./MenuMobile";
 import SocialNetworks from "./SocialNetworks";
+import LanguageToggle from "./LanguageToggle";
+import {useTranslation} from "react-i18next";
 
 function ElevationScroll ({ children }) {
     const trigger = useScrollTrigger({
@@ -32,7 +28,7 @@ function ElevationScroll ({ children }) {
       return React.cloneElement(children, {
         elevation: trigger ? 0 : 0,
           style: trigger ? {
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backgroundColor: 'rgba(6, 11, 26, 0.4)',
               backdropFilter: 'blur(10px)',
           } : { }
       });
@@ -63,19 +59,19 @@ const UnderlineButton = styled(Button)(({ theme }) => ({
 
 const pages = [
     {
-        name: 'Home',
+        name: 'nav.item.home',
         path: '/',
     },
     {
-        name: 'My services',
-        path: '/#services',
+        name: 'nav.item.services',
+        path: 'services',
     },
     {
-        name: 'Portfolio',
+        name: 'nav.item.portfolio',
         path: '/',
     },
     {
-        name: '¿Who am I?',
+        name: 'nav.item.who',
         path: '/',
     },
     // {
@@ -95,13 +91,19 @@ const useStyles = makeStyles((theme) => ({
 function Nav ({  }) {
     const classes = useStyles();
     const { colorMode, toggleColorMode } = React.useContext(Context);
-    const router = useRouter(),
-        theme = useTheme(),
-        isMd = useMediaQuery(theme.breakpoints.up('md')),
-        [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
+    const router = useRouter();
+    const theme = useTheme();
+    const isMd = useMediaQuery(theme.breakpoints.up('md'));
+    const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
+    const { t } = useTranslation();
 
     const handleRoute = (path) => {
-        router.push(path);
+        const section = document.getElementById(path);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        } else {
+            router.push(path);
+        }
     };
 
     const toggleMenuMobile = () => {
@@ -131,7 +133,7 @@ function Nav ({  }) {
                                         onClick={() => handleRoute(path)}
                                         sx={{ my: 2, mr: 2, color: 'inherit', display: 'block' }}
                                     >
-                                        {name}
+                                        {t(name)}
                                     </UnderlineButton>
                                 ))}
                             </Box>
@@ -143,9 +145,12 @@ function Nav ({  }) {
                         </Box>
                     }
                     <SocialNetworks />
-                    <Button variant={'outlined'} color={'secondary'} onClick={() => handleRoute('/#contact')} style={{ height: '30px' }}>
-                        Contact
-                    </Button>
+                    <Box sx={{ mr: 2 }}>
+                        <Button variant={'outlined'} color={'secondary'} onClick={() => handleRoute('contact')} style={{ height: '30px' }}>
+                            {t('nav.button.contact')}
+                        </Button>
+                    </Box>
+                    <LanguageToggle />
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
