@@ -1,10 +1,22 @@
 {
   "hero": "Hi, I'm Alex, and I'm a <1><0>{{role}}</0></1>",
   "hero.description": "Full Stack Software Engineer with 5+ years of experience in high-scale <b>Web Development</b>, <b>Big Data</b> and <b>Web Scraping</b>. Skilled in optimizing web performance and architecting cloud-based solutions. Passionate about building scalable systems that drive business impact and improve the world 🚀.",
+  "hero.lets_talk": "Let's talk",
+  "hero.see_projects": "See my projects",
+  "home.services.title": "My services",
+  "home.services.link": "Explore all services",
+  "home.services.personal_website.title": "Build your personal website",
+  "home.services.personal_website.description": "Are you a professional looking for a personal web site? Let's have a meet and set up your new way to connect with your clients!!",
+  "home.services.mobile.title": "Hybrid Mobile Solutions",
+  "home.services.mobile.description": "With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton",
+  "home.services.web_scraping.title": "Data Mining for Your Business",
+  "home.services.web_scraping.description": "Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.",
+  "home.stack.title": "My Tech Stack",
+  "home.featured.title": "Featured Projects",
   "nav.item.home": "Home",
   "nav.item.services": "Services",
   "nav.item.portfolio": "Portfolio",
-  "nav.item.who": "Who I am?",
+  "nav.item.who": "Who am I?",
   "nav.button.contact": "Contact",
   "footer.quote": "\"The people who are crazy enough to think they can change the world are the ones who do.\" - Steve Jobs\n"
 }

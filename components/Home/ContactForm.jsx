@@ -72,19 +72,21 @@ export default function ContactForm () {
   return <Box className={classes.root} id={'contact'}>
     <Container>
       <Grid container spacing={5}>
-        <Grid item xs={12} md={6}>
-          <Box>
+        <Grid item xs={12}>
             <Typography variant={'h3'} gutterBottom sx={{ fontWeight: 'bold' }}>
               Ready to build something together?
             </Typography>
-          </Box>
+            <br />
+            <Divider />
+        </Grid>
+        <Grid item xs={12} md={5}>
           <Box pb={4}>
             <Typography>
               If you want to talk about a project or just want to say hi, feel free to contact me.
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={7}>
           <form onSubmit={handleFormSubmit}>
             {
               success

@@ -56,15 +56,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     backgroundColor: '#111c45',
     backdropFilter: 'blur(10px)',
-    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     border: 0,
     '&:hover': {
       transform: 'translateY(-8px)',
-      boxShadow: '0 16px 32px rgba(0,0,0,0.5)',
+      boxShadow: '0 16px 32px rgba(10,10,10,0.5)',
     },
     [theme.breakpoints.down('md')]: {
       minHeight: 250,
+    },
+    [theme.breakpoints.up('xl')]: {
+      minHeight: '45vh',
     },
   },
   container: {

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'fit-content',
         [theme.breakpoints.down('md')]: {
             margin: theme.spacing(4, 0),
-        }
+        },
     },
     topSeparation: {
         paddingTop: '150px',

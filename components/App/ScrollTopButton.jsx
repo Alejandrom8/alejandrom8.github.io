@@ -16,7 +16,7 @@ const ScrollTopButton = () => {
     <Zoom in={trigger}>
       <Fab
         color="primary"
-        size="small"
+        size="medium"
         onClick={handleClick}
         aria-label="scroll back to top"
         sx={{

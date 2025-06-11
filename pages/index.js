@@ -76,7 +76,6 @@ function Home() {
               }}>
                 <Box sx={{
                   width: '100%',
-                  backgroundColor: 'rgba(4, 12, 33)',
                 }}>
                   <Typography variant={'h1'} gutterBottom className={classes.howdy}>
                     <Trans
@@ -101,9 +100,9 @@ function Home() {
                   </Typography>
                   <Box display={'flex'} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box pr={isMd ? 2 : 0} pb={isMd ? 0 : 2}>
-                      <Button variant={'contained'} color={'primary'} fullWidth={!isMd}>Let's talk</Button>
+                      <Button variant={'contained'} color={'primary'} fullWidth={!isMd}>{t('hero.lets_talk')}</Button>
                     </Box>
-                    <Button variant={'outlined'} color={'primary'} fullWidth={!isMd}>See my projects</Button>
+                    <Button variant={'outlined'} color={'primary'} fullWidth={!isMd}>{t('hero.see_projects')}</Button>
                   </Box>
                 </Box>
               </Box>
@@ -118,32 +117,45 @@ function Home() {
           </Grid>
         </Container>
       </section>
-      <HomeSection id={'services'} title={'My Services'} topSeparation={false} link={'/'} linkName={'Explore all services'}>
+      <HomeSection id={'services'} title={t('home.services.title')} topSeparation={false} link={'/'} linkName={t('home.services.link')}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={5.5}>
             <ServiceCard
-              title={'Build your personal website'}
+              title={t('home.services.personal_website.title')}
               image={"/website.png"}
-              description={'Are you a professional looking for a personal web site? Let\'s have a meet and set up your new way to connect with your clients!!'}
+              description={t('home.services.personal_website.description')}
             />
           </Grid>
           <Grid item xs={12} md={3.25}>
             <ServiceCard
-              title={'Hybrid Mobile Solutions'}
+              title={t('home.services.mobile.title')}
               image={"/mobile.png"}
-              description={'With hybrid tools (React Native, Ionic, etc.), I can take your ideas and transform them into a new brand IOS/Android applicaiton'}
+              description={t('home.services.mobile.description')}
             />
           </Grid>
           <Grid item xs={12} md={3.25}>
             <ServiceCard
-              title={'Data Mining for Your Business'}
+              title={t('home.services.web_scraping.title')}
               image={"/webscraping.png"}
-              description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
+              description={t('home.services.web_scraping.description')}
             />
           </Grid>
         </Grid>
       </HomeSection>
-      <HomeSection title={'Featured Projects'} link={'/'} linkName={'See all projects'}>
+      <HomeSection title={t('home.stack.title')}>
+        <TechStackTabs />
+      </HomeSection>
+      {/*<section className={classes.techStackSection}>*/}
+      {/*  <Container disableGutters>*/}
+      {/*    <Typography variant="h2" sx={{ marginBottom: '40px' }}>*/}
+      {/*      Featured Projects*/}
+      {/*    </Typography>*/}
+      {/*  </Container>*/}
+      {/*  <Box sx={{ width: '100%', px: 13 }}>*/}
+      {/*    <ServiceCardCarousel items={cards} />*/}
+      {/*  </Box>*/}
+      {/*</section>*/}
+      <HomeSection title={t('home.featured.title')} link={'/'} linkName={'See all projects'}>
         <ServiceCardCarousel items={cards} />
         {/*<Grid container spacing={3}>*/}
         {/*  <Grid item xs={12} md={6}>*/}
@@ -159,9 +171,6 @@ function Home() {
         {/*    />*/}
         {/*  </Grid>*/}
         {/*</Grid>*/}
-      </HomeSection>
-      <HomeSection title={'My Tech Stack'}>
-        <TechStackTabs />
       </HomeSection>
       {/*<section className={classes.techStackSection}>*/}
       {/*  <Container disableGutters>*/}
@@ -185,7 +194,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: '100%',
     height: 'fit-content',
-    backgroundColor: 'rgba(10, 10, 10, 0.2)'
+    backdropFilter: 'blur(5px)',
+    backgroundColor: 'rgba(10, 10, 10, 0.1)',
   },
   block: {
     width: '100%',
@@ -200,6 +210,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     [theme.breakpoints.down('md')]: {
       height: '95vh',
+    },
+    [theme.breakpoints.up('xl')]: {
+      height: '75vh',
     },
   },
   howdy: {
@@ -233,7 +246,6 @@ const useStyles = makeStyles((theme) => ({
   techStackSection: {
     width: '100%',
     paddingTop: '130px',
-    paddingBottom: '80px',
   }
 }))
 

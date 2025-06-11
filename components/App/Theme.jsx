@@ -57,7 +57,26 @@ let Theme = createTheme({
                 }
             }
         },
-        MuiContainer: {
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    // Aplica al texto del input
+                    '& .MuiInputBase-input': {
+                        color: '#ffffff', // color del texto
+                        fontWeight: 'bold'
+                    },
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: '#cccccc', // color del label
+                    '&.Mui-focused': {
+                        color: '#ffffff', // color del label cuando está enfocado
+                    },
+                },
+            },
         },
     }
 });

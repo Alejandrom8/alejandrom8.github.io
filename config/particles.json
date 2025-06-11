@@ -42,7 +42,8 @@
       "width": 1
     },
     "collisions": {
-      "enable": true
+      "enable": true,
+      "speed": 10
     },
     "move": {
       "direction": "none",
@@ -57,7 +58,7 @@
         "enable": true,
         "area": 600
       },
-      "value": 40
+      "value": 17
     },
     "opacity": {
       "value": 0.5
@@ -67,7 +68,7 @@
     },
     "size": {
       "random": true,
-      "value": 6
+      "value": 18
     }
   },
   "detectRetina": true

@@ -4,7 +4,7 @@ import { MenuItem, Select, Box } from '@mui/material';
 
 const languages = [
   { code: 'en', label: 'En', flag: '🇺🇸' },
-  { code: 'es', label: 'Es', flag: '🇪🇸' }
+  { code: 'es', label: 'Es', flag: '🇲🇽' }
 ];
 
 export default function LanguageSelector() {

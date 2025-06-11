@@ -3,6 +3,7 @@ import {Box, Drawer, IconButton, List, ListItem, ListItemText, Typography} from 
 import {makeStyles} from "@mui/styles";
 import CloseIcon from '@mui/icons-material/Close';
 import {useRouter} from "next/router";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -35,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MenuMobile ({ open, onClose, options }) {
-    const classes = useStyles(),
-        router = useRouter();
+    const classes = useStyles();
+    const router = useRouter();
+    const { t } = useTranslation();
 
     const handleRoute = (route) => {
         router.push(route);
@@ -64,7 +66,7 @@ function MenuMobile ({ open, onClose, options }) {
                     return <ListItem key={index} className={classes.option} button onClick={() => handleRoute(option.path)}>
                         <ListItemText className={classes.optionText}>
                             <Typography variant={'h2'} color={'inherit'}>
-                                {option.name}
+                                {t(option.name)}
                             </Typography>
                         </ListItemText>
                     </ListItem>
