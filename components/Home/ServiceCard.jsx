@@ -1,33 +1,24 @@
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Icon, Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
+import {useTranslation} from "react-i18next";
 
-const ServiceCard = ({ title, description, image, SectionIcon, imageAlt }) => {
-  const classes = useStyles();
+const ServiceCard = ({ title, description, image, imageAlt, link }) => {
+  const classes = useStyles({ itHasLink: !!link });
+  const { t } = useTranslation();
 
   return (
     <Card className={classes.root}>
-      <CardActionArea style={{ height: '100%' }}>
-        <CardMedia
-          component="img"
-          height="250"
-          image={image}
-          alt={imageAlt || title}
-          sx={{ borderRadius: '0 0 25px 25px', objectFit: 'cover' }}
-        />
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            image={image}
+            width={'100%'}
+            height={'100%'}
+            alt={imageAlt || title}
+            sx={{ borderRadius: '0 0 20px 20px', objectFit: 'cover' }}
+          />
+        </CardActionArea>
         <CardContent className={classes.container}>
-          {SectionIcon && (
-            <Box
-              sx={{
-                width: '100%',
-                height: 150,
-                display: 'grid',
-                placeItems: 'center',
-              }}
-            >
-              <SectionIcon fontSize="large" color="secondary" />
-            </Box>
-          )}
-
           <Typography variant="h5" gutterBottom className={classes.title}>
             {title}
           </Typography>
@@ -43,15 +34,29 @@ const ServiceCard = ({ title, description, image, SectionIcon, imageAlt }) => {
             {description}
           </Typography>
         </CardContent>
-      </CardActionArea>
+        {
+          !!link && (
+            <CardActions sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant={'text'}
+                sx={{ textTransform: 'none' }}
+                color={'secondary'}
+              >
+                {t('serviceCard.moreTitle')}
+              </Button>
+            </CardActions>
+          )
+        }
     </Card>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: 450,
-    minHeight: '65vh',
+  root: ({ itHasLink }) => ({
+    height: 500,
+    display: 'grid',
+    gridTemplateRows: itHasLink ? '45% 47% 8%' : '45% 55%',
+
     margin: theme.spacing(3, 0, 0, 0),
     borderRadius: 20,
     backgroundColor: '#111c45',
@@ -62,20 +67,10 @@ const useStyles = makeStyles((theme) => ({
       transform: 'translateY(-8px)',
       boxShadow: '0 16px 32px rgba(10,10,10,0.5)',
     },
-    [theme.breakpoints.down('md')]: {
-      minHeight: 250,
-    },
-    [theme.breakpoints.up('xl')]: {
-      minHeight: '45vh',
-    },
-  },
+  }),
   container: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2, 3),
     textAlign: 'left',
-    height: '50%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',

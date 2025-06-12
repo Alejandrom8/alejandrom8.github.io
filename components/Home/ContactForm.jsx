@@ -3,24 +3,25 @@ import {
   Box,
   Button,
   CircularProgress, Container,
-  Divider, Grid,
-  IconButton,
+  Divider, Grid, List, ListItem, ListItemIcon, ListItemText,
   Paper, Snackbar,
-  Stack,
   TextField,
-  Typography, useMediaQuery, useTheme
+  Typography, useMediaQuery, useTheme,
+  Link as MuiLink
 } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import React, {useCallback} from "react";
 import {useRouter} from "next/router";
 import {init, send} from "@emailjs/browser";
 import {makeStyles} from "@mui/styles";
+import {useTranslation} from "react-i18next";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import MailIcon from '@mui/icons-material/Mail';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 init("qMI5x_Ktft1NRhGYh");
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  rootContactForm: {
     marginTop: '100px',
     width: '100%',
     backgroundColor: 'rgba(6, 11, 26, 0.1)',
@@ -36,16 +37,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ContactForm () {
-  const classes = useStyles(),
-    theme = useTheme(),
-    router = useRouter(),
-    isMd = useMediaQuery(theme.breakpoints.up('md')),
-    [name, setName] = React.useState(''),
-    [email, setEmail] = React.useState(''),
-    [message, setMessage] = React.useState(''),
-    [loading, setLoading] = React.useState(false),
-    [success, setSuccess] = React.useState(false),
-    [error, setError] = React.useState(null);
+  const classes = useStyles();
+  const theme = useTheme();
+  const router = useRouter();
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [subject, setSubject] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const { t } = useTranslation();
+
+  const resetFields = () => {
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+  };
 
   const handleFormSubmit = useCallback((e) => {
     e.preventDefault();
@@ -54,37 +64,70 @@ export default function ContactForm () {
       to_name: 'Mr. Alejandro',
       from_name: name,
       from_email: email,
+      subject,
       message,
     }).then((response) => {
       console.log('SUCCESS!', response.status, response.text);
       setSuccess(true);
-      setTimeout(() => {
-        router.push('/');
-      }, 4000);
+      resetFields();
+      //TODO: mostrar alerta de exito
     }).catch((error) => {
       console.log('FAILED...', error);
+      //TODO: mostrar alerta de exito
       setError(error);
     }).finally(() => {
       setLoading(false);
     });
-  }, [router, name, email, message]);
+  }, [router, name, email, subject, message]);
 
-  return <Box className={classes.root} id={'contact'}>
+  return <Box className={classes.rootContactForm} id={'contact'}>
     <Container>
       <Grid container spacing={5}>
         <Grid item xs={12}>
             <Typography variant={'h3'} gutterBottom sx={{ fontWeight: 'bold' }}>
-              Ready to build something together?
+              {t('contact.title')}
             </Typography>
             <br />
             <Divider />
         </Grid>
         <Grid item xs={12} md={5}>
           <Box pb={4}>
-            <Typography>
-              If you want to talk about a project or just want to say hi, feel free to contact me.
+            <Typography variant={'h6'}>
+              {t('contact.description')}
             </Typography>
           </Box>
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <WhatsAppIcon />
+              </ListItemIcon>
+              <ListItemText>
+                <MuiLink href={'https://wa.me/+525545825533'} target={'_blank'} color={'secondary'}>
+                  {t('contact.whastapp.title')}
+                </MuiLink>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText>
+                <MuiLink href={'mailto:alejandro.gomez.dev@gmail.com'} target={'_blank'} color={'secondary'}>
+                  {t('contact.mail.title')}
+                </MuiLink>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <LinkedInIcon />
+              </ListItemIcon>
+              <ListItemText>
+                <MuiLink href={'https://www.linkedin.com/in/agmez/'} target={'_blank'} color={'secondary'}>
+                  {t('contact.linkedin.title')}
+                </MuiLink>
+              </ListItemText>
+            </ListItem>
+          </List>
         </Grid>
         <Grid item xs={12} md={7}>
           <form onSubmit={handleFormSubmit}>
@@ -102,10 +145,11 @@ export default function ContactForm () {
                       <TextField
                         required
                         variant={'outlined'}
-                        placeholder={'Enter your full name'}
+                        placeholder={t('contact.input.name.placeholder')}
+                        size={'small'}
                         type={'text'}
                         name={'name'}
-                        label={'Name'}
+                        label={t('contact.input.name')}
                         value={name}
                         disabled={loading}
                         onChange={(e) => setName(e.target.value)}
@@ -116,13 +160,28 @@ export default function ContactForm () {
                       <TextField
                         required
                         variant={'outlined'}
-                        placeholder={'jhon.doe@email.com, o wait, this is not your email...'}
+                        placeholder={t('contact.input.email.placeholder')}
+                        size={'small'}
                         type={'email'}
                         name={'email'}
-                        label={'Email'}
+                        label={t('contact.input.email')}
                         value={email}
                         disabled={loading}
                         onChange={(e) => setEmail(e.target.value)}
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        variant={'outlined'}
+                        placeholder={t('contact.input.subject.placeholder')}
+                        type={'text'}
+                        name={'subject'}
+                        label={t('contact.input.subject')}
+                        value={subject}
+                        disabled={loading}
+                        onChange={(e) => setSubject(e.target.value)}
                         fullWidth
                       />
                     </Grid>
@@ -134,7 +193,7 @@ export default function ContactForm () {
                         variant={'outlined'}
                         type={'text'}
                         name={'message'}
-                        label={'Message'}
+                        label={t('contact.input.message')}
                         value={message}
                         disabled={loading}
                         onChange={(e) => setMessage(e.target.value)}
@@ -149,7 +208,7 @@ export default function ContactForm () {
                         disabled={!name || !email || !message || loading}
                         type={'submit'}
                       >
-                        Send
+                        {t('contact.button.send')}
                         {
                           loading && <CircularProgress size={24} />
                         }

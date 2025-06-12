@@ -25,6 +25,7 @@ import ServiceCardCarousel from "../components/Home/ProjectsCarousel";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {useRouteHandler} from "../hooks";
 
 const cards = [
   <ServiceCard
@@ -50,7 +51,7 @@ function Home() {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'));
   const { t} = useTranslation();
-
+  const handleRoute = useRouteHandler();
 
   return <>
     <Head>
@@ -100,7 +101,14 @@ function Home() {
                   </Typography>
                   <Box display={'flex'} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box pr={isMd ? 2 : 0} pb={isMd ? 0 : 2}>
-                      <Button variant={'contained'} color={'primary'} fullWidth={!isMd}>{t('hero.lets_talk')}</Button>
+                      <Button
+                        variant={'contained'}
+                        color={'primary'}
+                        fullWidth={!isMd}
+                        onClick={() => handleRoute('contact')}
+                      >
+                        {t('hero.lets_talk')}
+                      </Button>
                     </Box>
                     <Button variant={'outlined'} color={'primary'} fullWidth={!isMd}>{t('hero.see_projects')}</Button>
                   </Box>

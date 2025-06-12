@@ -18,6 +18,7 @@ import MenuMobile from "./MenuMobile";
 import SocialNetworks from "./SocialNetworks";
 import LanguageToggle from "./LanguageToggle";
 import {useTranslation} from "react-i18next";
+import {useRouteHandler} from "../../hooks";
 
 function ElevationScroll ({ children }) {
     const trigger = useScrollTrigger({
@@ -96,15 +97,8 @@ function Nav ({  }) {
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
     const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
     const { t } = useTranslation();
+    const handleRoute = useRouteHandler();
 
-    const handleRoute = (path) => {
-        const section = document.getElementById(path);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        } else {
-            router.push(path);
-        }
-    };
 
     const toggleMenuMobile = () => {
         setIsMenuMobileOpen(!isMenuMobileOpen);

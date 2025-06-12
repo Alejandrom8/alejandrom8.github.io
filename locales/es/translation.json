@@ -18,5 +18,19 @@
   "nav.item.portfolio": "Portafolio",
   "nav.item.who": "¿Quién soy?",
   "nav.button.contact": "Contacto",
-  "footer.quote": "\"Las personas lo suficientemente locas como para pensar que pueden cambiar el mundo son las que lo hacen.\" - Steve Jobs\n"
+  "footer.quote": "\"Las personas lo suficientemente locas como para pensar que pueden cambiar el mundo son las que lo hacen.\" - Steve Jobs\n",
+  "contact.title": "¿Listo para construir algo juntos?",
+  "contact.description": "Si quieres hablar sobre un proyecto o simplemente saludar, no dudes en contactarme.",
+  "contact.input.name": "Nombre",
+  "contact.input.name.placeholder": "Ingresa tu nombre completo",
+  "contact.input.email": "Correo electrónico",
+  "contact.input.email.placeholder": "jhon.doe@email.com, o espera, ese no es tu correo...",
+  "contact.input.message": "Mensaje",
+  "contact.button.send": "Enviar",
+  "contact.input.subject": "Asunto",
+  "contact.input.subject.placeholder": "¿Qée tienes en mente?",
+  "serviceCard.moreTitle": "Más detalles",
+  "contact.whastapp.title": "Envíame un Whatsapp",
+  "contact.mail.title": "alejandro.gomez.dev@gmail.com",
+  "contact.linkedin.title": "linkedin.com/in/agmez/"
 }

@@ -18,5 +18,19 @@
   "nav.item.portfolio": "Portfolio",
   "nav.item.who": "Who am I?",
   "nav.button.contact": "Contact",
-  "footer.quote": "\"The people who are crazy enough to think they can change the world are the ones who do.\" - Steve Jobs\n"
+  "footer.quote": "\"The people who are crazy enough to think they can change the world are the ones who do.\" - Steve Jobs\n",
+  "contact.title": "Ready to build something together?",
+  "contact.description": "If you want to talk about a project or just want to say hi, feel free to contact me.",
+  "contact.input.name": "Name",
+  "contact.input.name.placeholder": "Enter your full name",
+  "contact.input.email": "Email",
+  "contact.input.email.placeholder": "jhon.doe@email.com, o wait, this is not your email...",
+  "contact.input.message": "Message",
+  "contact.button.send": "Send",
+  "contact.input.subject": "Subject",
+  "contact.input.subject.placeholder": "What do yo have in mind?",
+  "serviceCard.moreTitle": "More details",
+  "contact.whastapp.title": "Send me a Whatsapp",
+  "contact.mail.title": "alejandro.gomez.dev@gmail.com",
+  "contact.linkedin.title": "linkedin.com/in/agmez/"
 }
