@@ -1,14 +1,14 @@
 import {makeStyles} from "@mui/styles";
 import {Box, Container, Divider, Stack, Typography} from "@mui/material";
 import SocialNetworks from "./SocialNetworks";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "next-i18next";
 
 export default function Footer() {
   const classes = useStyles();
   const { t } = useTranslation();
   return <Box className={classes.footer}>
     <Container className={classes.container}>
-      <Box sx={{ marginBottom: 3, textAlign: 'center', minHeight: '100px', display: 'grid', placeItems: 'center' }}>
+      <Box sx={{ marginBottom: 3, textAlign: 'center', minHeight: '200px', display: 'grid', placeItems: 'center' }}>
         <Typography variant={'h6'} sx={{ width: '65%' }}>
           {t('footer.quote')}
         </Typography>

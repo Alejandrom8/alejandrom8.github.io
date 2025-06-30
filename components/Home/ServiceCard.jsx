@@ -1,6 +1,6 @@
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Icon, Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "next-i18next";
 
 const ServiceCard = ({ title, description, image, imageAlt, link }) => {
   const classes = useStyles({ itHasLink: !!link });
@@ -15,7 +15,7 @@ const ServiceCard = ({ title, description, image, imageAlt, link }) => {
             width={'100%'}
             height={'100%'}
             alt={imageAlt || title}
-            sx={{ borderRadius: '0 0 20px 20px', objectFit: 'cover' }}
+            sx={{ borderRadius: '20px', objectFit: 'cover' }}
           />
         </CardActionArea>
         <CardContent className={classes.container}>
@@ -25,9 +25,10 @@ const ServiceCard = ({ title, description, image, imageAlt, link }) => {
           <Typography
             sx={{
               paddingTop: 2,
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: 500,
               lineHeight: 1.5,
+              textAlign: 'justify',
               color: '#DDD',
             }}
           >
@@ -59,10 +60,10 @@ const useStyles = makeStyles((theme) => ({
 
     margin: theme.spacing(3, 0, 0, 0),
     borderRadius: 20,
-    backgroundColor: '#111c45',
+    backgroundColor: 'rgba(17, 28, 69, 0.5)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
     backdropFilter: 'blur(10px)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    border: 0,
     '&:hover': {
       transform: 'translateY(-8px)',
       boxShadow: '0 16px 32px rgba(10,10,10,0.5)',
@@ -75,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0),
     color: theme.palette.common.white,
     textShadow: '0 1px 3px rgba(0,0,0,0.5)',
   },

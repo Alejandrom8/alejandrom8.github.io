@@ -1,5 +1,7 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+'use client';
+
+import React, {useEffect, useState} from 'react';
+import { useTranslation } from 'next-i18next';
 import { MenuItem, Select, Box } from '@mui/material';
 
 const languages = [
@@ -9,10 +11,17 @@ const languages = [
 
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true); // Ensures this only runs on the client
+  }, []);
 
   const handleChange = (event) => {
     i18n.changeLanguage(event.target.value);
   };
+
+  if (!mounted) return null; // Or a fallback spinner
 
   return (
     <Select

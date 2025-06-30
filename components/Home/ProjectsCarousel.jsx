@@ -1,8 +1,6 @@
 import React, {useRef} from "react";
 import Slider from "react-slick";
 import { Box, IconButton } from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import {ArrowBackIos, ArrowForwardIos} from "@mui/icons-material";
 
 const ServiceCardCarousel = ({ items }) => {
@@ -14,8 +12,8 @@ const ServiceCardCarousel = ({ items }) => {
         width: '100%',
         position: 'relative',
         overflow: 'visible', // 👈 importante para que se vean fuera
-        mt: 4,
-        px: 5, // espacio para que las tarjetas no choquen con los botones
+        mt: 3,
+        px: 1, // espacio para que las tarjetas no choquen con los botones
       }}
     >
       {/* Botón izquierdo */}
@@ -49,11 +47,11 @@ const ServiceCardCarousel = ({ items }) => {
       {/* Slider */}
       <Slider
         ref={sliderRef}
-        dots={false}
+        dots={true}
         arrows={false}
-        infinite={true}
+        infinite={false}
         speed={500}
-        slidesToShow={2}
+        slidesToShow={1}
         slidesToScroll={1}
         responsive={[
           { breakpoint: 1200, settings: { slidesToShow: 2 } },

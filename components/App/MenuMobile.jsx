@@ -3,7 +3,7 @@ import {Box, Drawer, IconButton, List, ListItem, ListItemText, Typography} from 
 import {makeStyles} from "@mui/styles";
 import CloseIcon from '@mui/icons-material/Close';
 import {useRouter} from "next/router";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "next-i18next";
 
 const useStyles = makeStyles((theme) => ({
     drawer: {

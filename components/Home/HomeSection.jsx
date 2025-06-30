@@ -21,7 +21,7 @@ function HomeSection ({ title, children, centerTitle = false, topSeparation = tr
                 </Grid>
                 {
                     (link && linkName) && <Grid item>
-                      <Link href={link}>
+                      <Link href={link} legacyBehavior>
                           <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
                               <MuiLink className={classes.link}>
                                   { linkName }
@@ -54,11 +54,11 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         textAlign: 'left',
+        fontSize: '30px'
     },
     centerTitle: {
         textAlign: 'center',
         width: '100%',
-        marginTop: '100px',
     },
     link: {
         color: theme.palette.secondary.main,

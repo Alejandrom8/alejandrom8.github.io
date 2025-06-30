@@ -13,7 +13,7 @@ import React, {useCallback} from "react";
 import {useRouter} from "next/router";
 import {init, send} from "@emailjs/browser";
 import {makeStyles} from "@mui/styles";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "next-i18next";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MailIcon from '@mui/icons-material/Mail';
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
   rootContactForm: {
     marginTop: '100px',
     width: '100%',
-    backgroundColor: 'rgba(6, 11, 26, 0.1)',
-    backdropFilter: 'blur(8px)',
+    // backgroundColor: 'rgba(6, 11, 26, 0.1)',
+    backgroundColor: '#111C454C',
+    backdropFilter: 'blur(10px)',
     padding: theme.spacing(10, 0),
     borderTop: `1px solid ${theme.palette.divider}`,
   },
@@ -84,7 +85,7 @@ export default function ContactForm () {
     <Container>
       <Grid container spacing={5}>
         <Grid item xs={12}>
-            <Typography variant={'h3'} gutterBottom sx={{ fontWeight: 'bold' }}>
+            <Typography variant={'h3'} gutterBottom sx={{ fontWeight: 'bold', color: 'inherit' }}>
               {t('contact.title')}
             </Typography>
             <br />

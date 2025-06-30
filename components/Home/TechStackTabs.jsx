@@ -1,7 +1,6 @@
 import {Box, Tabs, Tab, Typography, Grid, Toolbar, Chip, Stack} from "@mui/material";
 import StackIcon from "tech-stack-icons";
 import React from "react";
-import Marquee from "react-fast-marquee";
 
 const categories = [
   "frontend", "backend",
@@ -26,6 +25,25 @@ const skills = [
     { name: "datadog", displayName: "DataDog", category: "backend" },
     { name: "git", displayName: "Git", category: "backend" },
     { name: "bash", displayName: "Bash", category: "backend" },
+    { name: "nextjs2", displayName: "Next.js", category: "backend" },
+    { name: "php", displayName: "PHP", category: "backend" },
+    { name: "swift", displayName: "Swift", category: "backend" },
+    { name: "electron", displayName: "Electron.js", category: "backend" },
+];
+
+const more = [
+  { name: "digitalocean", displayName: "DigitalOcean", category: "backend" },
+  { name: "docker", displayName: "Docker", category: "backend" },
+  { name: "figma", displayName: "Figma", category: "backend" },
+  { name: "flask", displayName: "Flask", category: "backend" },
+  { name: "go", displayName: "Go", category: "backend" },
+  { name: "ionic", displayName: "Iconic", category: "backend" },
+  { name: "sass", displayName: "Sass", category: "backend" },
+  { name: "postman", displayName: "Postman", category: "backend" },
+  { name: "nodejs", displayName: "Node.js", category: "backend" },
+  { name: "materialui", displayName: "MUI 5", category: "backend" },
+  { name: "java", displayName: "Java", category: "backend" },
+  { name: "jest", displayName: "Jest", category: "backend" },
 ];
 
 function SkillCard ({ skill }) {

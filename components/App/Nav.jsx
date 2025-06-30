@@ -17,7 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuMobile from "./MenuMobile";
 import SocialNetworks from "./SocialNetworks";
 import LanguageToggle from "./LanguageToggle";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "next-i18next";
 import {useRouteHandler} from "../../hooks";
 
 function ElevationScroll ({ children }) {
@@ -91,8 +91,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav ({  }) {
     const classes = useStyles();
-    const { colorMode, toggleColorMode } = React.useContext(Context);
-    const router = useRouter();
     const theme = useTheme();
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
     const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);

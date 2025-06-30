@@ -1,3 +1,4 @@
+'use client';
 import {
   Grid,
   Box,
@@ -20,28 +21,37 @@ import ServiceCard from "../components/Home/ServiceCard";
 import Footer from "../components/App/Footer";
 import TechStackTabs from "../components/Home/TechStackTabs";
 import ContactForm from "../components/Home/ContactForm";
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from 'next-i18next';
 import ServiceCardCarousel from "../components/Home/ProjectsCarousel";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {useRouteHandler} from "../hooks";
+import { CldImage, getCldImageUrl } from 'next-cloudinary';
+import ProjectCard from "../components/Home/Project/Card";
 
 const cards = [
-  <ServiceCard
+  <ProjectCard
+    title={'AstroMX - El robot asistente médico aeroespacial'}
+    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
+    description={`
+    AstroMX es un robot cuya misión es la asistencia médica de los astronautas en la estación espacial internacional. Este dispositivo fue desarrollado como parte de las actividades de la división de medicina aeroespacial (Cosmoblastos) de la Asociación Aeroespacial de la Facultad de Ingeniería de la UNAM. Fui el encargado del desarrollo del sistema operativo para este robot.
+    `}
+  />,
+  <ProjectCard
     title={'Data Mining for Your Business'}
+    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
     description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
   />,
-  <ServiceCard
+  <ProjectCard
     title={'Data Mining for Your Business'}
+    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
     description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
   />,
-  <ServiceCard
+  <ProjectCard
     title={'Data Mining for Your Business'}
-    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
-  />,
-  <ServiceCard
-    title={'Data Mining for Your Business'}
+    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
     description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
   />,
 ];
@@ -50,7 +60,7 @@ function Home() {
   const classes = useStyles();
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'));
-  const { t} = useTranslation();
+  const { t} = useTranslation('translation');
   const handleRoute = useRouteHandler();
 
   return <>
@@ -80,7 +90,8 @@ function Home() {
                 }}>
                   <Typography variant={'h1'} gutterBottom className={classes.howdy}>
                     <Trans
-                      i18nKey="hero"
+                      i18nKey={'hero'}
+                      ns={'translation'}
                       shouldUnescape={true}
                       components={{
                         0: <span className={classes.contrastText} />,
@@ -94,6 +105,7 @@ function Home() {
                   <Typography style={{ lineHeight: 1.6, fontSize: '1.3rem', fontWeight: '500', color: '#DDD' }} my={4}>
                     <Trans
                       i18nKey="hero.description"
+                      ns={'translation'}
                       components={{
                         b: <b style={{ fontSize: '1.3rem', color: '#fff' }} />
                       }}
@@ -118,7 +130,17 @@ function Home() {
             {
               isMd && <Grid item xs={12} md={6}>
                 <Box sx={{display: 'flex', justifyContent: 'right', width: '100%', alignItems: 'center', height: '100%'}}>
-                  <div className={classes.me} />
+                  <CldImage
+                    src="IMG_0018_vrivmb"
+                    width="400"
+                    height="400"
+                    className={classes.me}
+                    crop={{
+                      type: 'auto',
+                      source: true
+                    }}
+                  />
+                  {/*<div className={classes.me} />*/}
                 </Box>
               </Grid>
             }
@@ -127,24 +149,24 @@ function Home() {
       </section>
       <HomeSection id={'services'} title={t('home.services.title')} topSeparation={false} link={'/'} linkName={t('home.services.link')}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={5.5}>
+          <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.personal_website.title')}
-              image={"/website.png"}
+              image={getCldImageUrl({ src: 'website_cfqpos' })}
               description={t('home.services.personal_website.description')}
             />
           </Grid>
-          <Grid item xs={12} md={3.25}>
+          <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.mobile.title')}
-              image={"/mobile.png"}
+              image={getCldImageUrl({ src: 'mobile_wflblc' })}
               description={t('home.services.mobile.description')}
             />
           </Grid>
-          <Grid item xs={12} md={3.25}>
+          <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.web_scraping.title')}
-              image={"/webscraping.png"}
+              image={getCldImageUrl({ src: 'webscraping_gxbgtk' })}
               description={t('home.services.web_scraping.description')}
             />
           </Grid>
@@ -163,7 +185,7 @@ function Home() {
       {/*    <ServiceCardCarousel items={cards} />*/}
       {/*  </Box>*/}
       {/*</section>*/}
-      <HomeSection title={t('home.featured.title')} link={'/'} linkName={'See all projects'}>
+      <HomeSection title={t('home.featured.title')}>
         <ServiceCardCarousel items={cards} />
         {/*<Grid container spacing={3}>*/}
         {/*  <Grid item xs={12} md={6}>*/}
@@ -237,13 +259,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   me: {
-    width: '390px',
-    height: '400px',
     borderRadius: '50%',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: 'url(/me_yellow.webp)',
     border: '5px solid #FCAB10',
     '-webkit-user-select': 'none',
     '-khtml-user-select': 'none',
@@ -256,5 +272,13 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '130px',
   }
 }))
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['translation'])),
+    },
+  };
+}
 
 export default Home;

@@ -7,6 +7,7 @@ import * as gtag from '../lib/gtag';
 import '../i18n';
 import {useRouter} from "next/router";
 import Script from "next/script";
+import { appWithTranslation } from 'next-i18next';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -77,4 +78,4 @@ function MyApp({ Component, pageProps }) {
   </>
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);
