@@ -25,53 +25,47 @@ const ServiceCard = ({ title, description, image, imageAlt, link }) => {
           <Typography
             sx={{
               paddingTop: 2,
-              fontSize: 17,
+              fontSize: 19,
               fontWeight: 500,
-              lineHeight: 1.5,
-              textAlign: 'justify',
+              textAlign: 'center',
               color: '#DDD',
             }}
           >
             {description}
           </Typography>
-        </CardContent>
-        {
-          !!link && (
-            <CardActions sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', display: 'flex', justifyContent: 'center' }}>
-              <Button
-                variant={'text'}
-                sx={{ textTransform: 'none' }}
-                color={'secondary'}
-              >
-                {t('serviceCard.moreTitle')}
+          <div style={{ flexGrow: 1 }}/>
+          <Box sx={{ display: 'grid', placeItems: 'center' }}>
+              <Button variant={'text'} color={'primary'}>
+                Let's schedule a meet!
               </Button>
-            </CardActions>
-          )
-        }
+          </Box>
+        </CardContent>
     </Card>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
   root: ({ itHasLink }) => ({
-    height: 500,
+    height: 570,
     display: 'grid',
     gridTemplateRows: itHasLink ? '45% 47% 8%' : '45% 55%',
 
     margin: theme.spacing(3, 0, 0, 0),
     borderRadius: 20,
-    backgroundColor: 'rgba(17, 28, 69, 0.5)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(17, 28, 69, 0.7)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
     backdropFilter: 'blur(10px)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     '&:hover': {
-      transform: 'translateY(-8px)',
+      transform: 'translateY(-6px)',
       boxShadow: '0 16px 32px rgba(10,10,10,0.5)',
     },
   }),
   container: {
     padding: theme.spacing(2, 3),
     textAlign: 'left',
+    display: 'flex',
+    flexDirection: 'column',
   },
   title: {
     fontWeight: 'bold',
@@ -79,11 +73,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(0),
     color: theme.palette.common.white,
     textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+    textAlign: 'center'
   },
   description: {
     color: theme.palette.grey[300],
     fontWeight: 400,
-    lineHeight: 1.6,
     paddingTop: theme.spacing(1),
   },
 }));

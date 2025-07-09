@@ -34,24 +34,24 @@ import ProjectCard from "../components/Home/Project/Card";
 const cards = [
   <ProjectCard
     title={'AstroMX - El robot asistente médico aeroespacial'}
-    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
+    projectMediaId={'astro'}
     description={`
-    AstroMX es un robot cuya misión es la asistencia médica de los astronautas en la estación espacial internacional. Este dispositivo fue desarrollado como parte de las actividades de la división de medicina aeroespacial (Cosmoblastos) de la Asociación Aeroespacial de la Facultad de Ingeniería de la UNAM. Fui el encargado del desarrollo del sistema operativo para este robot.
+    AstroMX es un robot cuya función es la asistencia médica de los astronautas en la ISS, mediante la obtención y análisis de datos fisiológicos gracias al uso de sensores y algoritmos especializados. Este dispositivo fue desarrollado como parte de las actividades de la división de medicina aeroespacial — Cosmoblastos — de la AAFI, UNAM. Mis actividades incluyeron
+    `}
+  />,
+  <ProjectCard
+    title={'PlayerProps - Software de análisis estadístico para apuestas de deportes'}
+    projectMediaId={'player-props'}
+    description={`
+      PlayerProps es un software de análisis estadístico enfocado en datos relativos a las apuestas en el mundo de los deportes. Por medio de diferentes fuentes de datos aplica algoritmos estadísticos, matemáticos y de inteligencia artificial para generar los mejores insights que conlleven a apuestas ganadoras. En este proyecto fui el primer desarrollador y posteriormente Lead Software Engineer, siendo mis actividades principales:
     `}
   />,
   <ProjectCard
     title={'Data Mining for Your Business'}
-    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
     description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
   />,
   <ProjectCard
     title={'Data Mining for Your Business'}
-    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
-    description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
-  />,
-  <ProjectCard
-    title={'Data Mining for Your Business'}
-    image={'8C3E75AC-42D7-47BE-9F28-A468B340B045_1_105_c_ddcxw3'}
     description={'Need data? Web scraping lets you quickly extract information from any website in any format, fast and automated.'}
   />,
 ];
@@ -147,26 +147,26 @@ function Home() {
           </Grid>
         </Container>
       </section>
-      <HomeSection id={'services'} title={t('home.services.title')} topSeparation={false} link={'/'} linkName={t('home.services.link')}>
+      <HomeSection id={'services'} title={t('home.services.title')} topSeparation={false}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.personal_website.title')}
-              image={getCldImageUrl({ src: 'website_cfqpos' })}
+              image={getCldImageUrl({ src: 'website_lkzfhk' })}
               description={t('home.services.personal_website.description')}
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.mobile.title')}
-              image={getCldImageUrl({ src: 'mobile_wflblc' })}
+              image={getCldImageUrl({ src: 'mobile_pecbmq' })}
               description={t('home.services.mobile.description')}
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <ServiceCard
               title={t('home.services.web_scraping.title')}
-              image={getCldImageUrl({ src: 'webscraping_gxbgtk' })}
+              image={getCldImageUrl({ src: 'webscraping_cv7gse' })}
               description={t('home.services.web_scraping.description')}
             />
           </Grid>

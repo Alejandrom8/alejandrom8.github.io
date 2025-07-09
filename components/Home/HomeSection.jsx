@@ -14,23 +14,24 @@ function HomeSection ({ title, children, centerTitle = false, topSeparation = tr
     return <section className={clsx(classes.root, { [classes.topSeparation]: topSeparation })} {...rest} >
         <Container disableGutters={isMd}>
             <Grid container spacing={3} alignItems={'center'}>
-                <Grid item sx={{ marginBottom: '10px' }} flexGrow={1}>
-                    <Typography variant="h2" className={clsx(classes.title, { [classes.centerTitle]: centerTitle })}>
-                        {title}
-                    </Typography>
+                <Grid item flexGrow={1}>
+                    <Box sx={{ marginBottom: '40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                        <Typography variant="h2" className={clsx(classes.title, { [classes.centerTitle]: centerTitle })}>
+                            {title}
+                        </Typography>
+                        {
+                          (link && linkName) &&
+                          <Link href={link} legacyBehavior>
+                              <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+                                  <MuiLink className={classes.link}>
+                                      { linkName }
+                                  </MuiLink>
+                                  <KeyboardArrowRightIcon />
+                              </Box>
+                          </Link>
+                        }
+                    </Box>
                 </Grid>
-                {
-                    (link && linkName) && <Grid item>
-                      <Link href={link} legacyBehavior>
-                          <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
-                              <MuiLink className={classes.link}>
-                                  { linkName }
-                              </MuiLink>
-                              <KeyboardArrowRightIcon />
-                          </Box>
-                      </Link>
-                  </Grid>
-                }
                 <Grid item xs={12}>
                     <Box sx={{ width: '100%' }}>
                         {children}
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         height: 'fit-content',
+        marginTop: '70px',
         [theme.breakpoints.down('md')]: {
             margin: theme.spacing(4, 0),
         },
@@ -54,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         textAlign: 'left',
-        fontSize: '30px'
+        fontSize: '40px',
+        flexGrow: 1,
     },
     centerTitle: {
         textAlign: 'center',

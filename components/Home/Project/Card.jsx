@@ -20,7 +20,7 @@ const ProjectCard = ({ title, description, projectMediaId = 'astro', link }) => 
       <CardContent className={classes.container}>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <MediaExplorer projectId={projectMediaId} />
+            <MediaExplorer projectMediaId={projectMediaId} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Box p={5} pt={2}>
