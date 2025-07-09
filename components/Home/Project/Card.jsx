@@ -41,7 +41,6 @@ const ProjectCard = ({ title, description, projectMediaId = 'astro', link }) => 
 const useStyles = makeStyles((theme) => ({
   rootProjectCard: ({ itHasLink }) => ({
     height: 600,
-    borderRadius: 20,
     backgroundColor: 'rgba(17, 28, 69, 0.7)',
     backdropFilter: 'blur(10px)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',

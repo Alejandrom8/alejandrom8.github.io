@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         height: 'fit-content',
-        marginTop: '70px',
         [theme.breakpoints.down('md')]: {
             margin: theme.spacing(4, 0),
         },

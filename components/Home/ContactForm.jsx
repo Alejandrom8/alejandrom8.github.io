@@ -22,7 +22,7 @@ init("qMI5x_Ktft1NRhGYh");
 
 const useStyles = makeStyles((theme) => ({
   rootContactForm: {
-    marginTop: '200px',
+    marginTop: '150px',
     width: '100%',
     // backgroundColor: 'rgba(6, 11, 26, 0.1)',
     backgroundColor: '#111C454C',

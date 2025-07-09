@@ -33,12 +33,12 @@ const ServiceCard = ({ title, description, image, imageAlt, link }) => {
           >
             {description}
           </Typography>
-          <div style={{ flexGrow: 1 }}/>
-          <Box sx={{ display: 'grid', placeItems: 'center' }}>
-              <Button variant={'text'} color={'primary'}>
-                Let's schedule a meet!
-              </Button>
-          </Box>
+          {/*<div style={{ flexGrow: 1 }}/>*/}
+          {/*<Box sx={{ display: 'grid', placeItems: 'center' }}>*/}
+          {/*    <Button variant={'outlined'} color={'secondary'}>*/}
+          {/*      Let's schedule a meet!*/}
+          {/*    </Button>*/}
+          {/*</Box>*/}
         </CardContent>
     </Card>
   );
@@ -52,8 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
     margin: theme.spacing(3, 0, 0, 0),
     borderRadius: 20,
-    backgroundColor: 'rgba(17, 28, 69, 0.7)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(17, 28, 69, 1)',
     backdropFilter: 'blur(10px)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     '&:hover': {

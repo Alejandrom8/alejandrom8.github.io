@@ -149,24 +149,24 @@ function Home() {
       </section>
       <HomeSection id={'services'} title={t('home.services.title')} topSeparation={false}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={5}>
             <ServiceCard
               title={t('home.services.personal_website.title')}
-              image={getCldImageUrl({ src: 'website_lkzfhk' })}
+              image={getCldImageUrl({ src: 'website_cfqpos' })}
               description={t('home.services.personal_website.description')}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3.5}>
             <ServiceCard
               title={t('home.services.mobile.title')}
-              image={getCldImageUrl({ src: 'mobile_pecbmq' })}
+              image={getCldImageUrl({ src: 'mobile_wflblc' })}
               description={t('home.services.mobile.description')}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3.5}>
             <ServiceCard
               title={t('home.services.web_scraping.title')}
-              image={getCldImageUrl({ src: 'webscraping_cv7gse' })}
+              image={getCldImageUrl({ src: 'webscraping_gxbgtk' })}
               description={t('home.services.web_scraping.description')}
             />
           </Grid>
